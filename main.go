@@ -16,7 +16,7 @@ func connectAll(host string, ports []string) {
 }
 
 func connect(socket string) {
-	timeout := time.Second
+	timeout := 15 * time.Second
 	fmt.Printf("Is %s open...  ", socket)
 	conn, err := net.DialTimeout("tcp", socket, timeout)
 	if err != nil {
@@ -29,17 +29,6 @@ func connect(socket string) {
 }
 
 func main() {
-	//socket, err := io.ReadAll(os.Stdin)
-	//if err != nil {
-	//	fmt.Println("An error occurred while reading stdin")
-	//	os.Exit(-1)
-	//}
-	//if socket != nil && len(socket) > 0 {
-		//connect(string(socket))
-	//	os.Exit(0)
-	//}
-	//os.Exit(0)
-
 	socketFlag := flag.String("socket", "", "remote host and port to test. format 'host:port'")
 	hostFlag := flag.String("host", "", "remote host to test")
 	portsFlag := flag.String("ports", "", "ports to test. accepts single port or multiple ports comma separated, or in a range")
